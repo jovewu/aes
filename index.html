@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+key  : <input type="text" id="mykey" value="">
+<br><br>
+input: <textarea id="myinput" name="mytext"
+          rows="5"
+          cols="40"
+          required>
+
+</textarea>
+
+
+<div  >
+ <button class="btn btn-success navbar-btn btn-sm" type="button" style="float:left" onclick="enc()" >加密</button>
+ 
+<button class="btn btn-success navbar-btn btn-sm" type="button" style="float:left;margin-left:100px;" onclick="dec()">解密</button>
+
+
+</div>
+
+
+<br><br>
+output: <textarea id="myoutput" name="mytext"
+          rows="5"
+          cols="40"
+          required>
+
+</textarea>
+
+
+
+<script>
+function myFunction() {
+
+  
+   
+// (C) TEST
+// (C1) ENCRYPT CLEAR TEXT
+var cipher = crypt.encrypt("FOO BAR");
+console.log(cipher);
+ 
+// (C2) DECRYPT CIPHER TEXT
+var decipher = crypt.decrypt(cipher);
+console.log(decipher);
+
+  document.getElementById("myoutput").value = decipher;
+  
+}
+
+function dec(){
+// (C2) DECRYPT CIPHER TEXT
+var cipher=document.getElementById("myinput").value
+var decipher = crypt.decrypt(cipher);
+console.log(decipher);
+
+  document.getElementById("myoutput").value = decipher;
+}
+
+
+
+function enc(){
+// (C) TEST
+// (C1) ENCRYPT CLEAR TEXT
+var encText=document.getElementById("myinput").value
+var cipher = crypt.encrypt(encText);
+console.log(cipher);
+
+document.getElementById("myoutput").value = cipher;
+}
+</script>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script>
+// (B) ENCRYPT & DECRYPT FUNCTIONS
+var crypt = {
+  // (B1) THE SECRET KEY
+  secret :  document.getElementById("mykey").value,
+ 
+  // (B2) ENCRYPT
+  encrypt : function (clear) {
+    var cipher = CryptoJS.AES.encrypt(clear, crypt.secret);
+    cipher = cipher.toString();
+    return cipher;
+  },
+ 
+  // (B3) DECRYPT
+  decrypt : function (cipher) {
+    var decipher = CryptoJS.AES.decrypt(cipher, crypt.secret);
+    decipher = decipher.toString(CryptoJS.enc.Utf8);
+    return decipher;
+  }
+};
+ 
+ 
+
+</script>
+
+
+
+
+</body>
+</html>
