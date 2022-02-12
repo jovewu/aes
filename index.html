@@ -85,7 +85,7 @@ var crypt = {
   // (B2) ENCRYPT
   encrypt : function (clear) {
     var cipher = CryptoJS.AES.encrypt(clear, crypt.secret);
-    console.log("mykey="+ mykey);
+
     cipher = cipher.toString();
     return cipher;
   },
@@ -93,7 +93,7 @@ var crypt = {
   // (B3) DECRYPT
   decrypt : function (cipher) {
     var decipher = CryptoJS.AES.decrypt(cipher, crypt.secret);
-    console.log("mykey="+ mykey);
+
     decipher = decipher.toString(CryptoJS.enc.Utf8);
     return decipher;
   }
