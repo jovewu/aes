@@ -81,7 +81,7 @@ document.getElementById("myoutput").value = cipher;
 var crypt = {
   // (B1) THE SECRET KEY
   secret :  document.getElementById("mykey").value,
- 
+  console.log("mykey="+ mykey);
   // (B2) ENCRYPT
   encrypt : function (clear) {
     var cipher = CryptoJS.AES.encrypt(clear, crypt.secret);
